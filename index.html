@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>145a's client</title>
+    <title>Document</title>
 </head>
 <body>
-    <label for="auth">Dao3 Auth:</label>
-    <input type="text" id="auth" name="name" required size="auto" />
+    <script>
+        (function(){var script=document.createElement('script');script.src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.js";document.body.append(script);script.onload=function(){eruda.init()}})();
+        (async function main() {
+            let auth = prompt("Dao3 Auth:");
+            if(!auth)return;
+            let h = new Headers();
+            h.append("Authorization",auth);
+            h.append("nonce","rtJ1fM34GKTmM3QGV2ihC");
+            h.append("timestamp",Date.now());
+            h.append("hash","C0DBAB8F0311E7DAC50D9F436D37EC7055A34BFB3B60D9670A15A23EA0D4E835");
+            let r = new Request("https://code-api-pc.dao3.fun/ugc/creator/content/page",{
+                method:"POST",
+                headers:h
+            });
+            let f = await fetch(r);
+            console.log(await f.json());
+        })();
+    </script>
 </body>
 </html>
