@@ -12,6 +12,8 @@
             let auth = prompt("Dao3 Auth:");
             if(!auth)return;
             let h = new Headers();
+            h.append("Accept","application/json, text/plain, */*");
+            h.append("Content-Type","application/json");
             h.append("Cache-Control","no-cache,no-store,must-revalidate");
             h.append("Authorization",auth);
             h.append("nonce","rtJ1fM34GKTmM3QGV2ihC");
@@ -19,7 +21,14 @@
             h.append("hash","C0DBAB8F0311E7DAC50D9F436D37EC7055A34BFB3B60D9670A15A23EA0D4E835");
             let r = new Request("https://code-api-pc.dao3.fun/ugc/creator/content/page",{
                 method:"POST",
-                headers:h
+                headers:h,
+                body:{
+                    "type":0,
+                    "limit":24,
+                    "offset":0,
+                    "orderBy":1,
+                    "orderDesc":true
+                }
             });
             let f = await fetch(r);
             console.log(JSON.stringify(await f.json()));
