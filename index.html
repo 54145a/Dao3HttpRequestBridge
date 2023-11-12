@@ -6,8 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <script src="//cdn.bootcdn.net/ajax/libs/eruda/2.3.3/eruda.js"></script>
+    <script>eruda.init();</script>
     <script>
-        (function(){var script=document.createElement('script');script.src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.js";document.body.append(script);script.onload=function(){eruda.init()}})();
         (async function main() {
             let auth = prompt("Dao3 Auth:");
             if(!auth)return;
