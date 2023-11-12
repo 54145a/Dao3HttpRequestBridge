@@ -21,7 +21,7 @@
                 headers:h
             });
             let f = await fetch(r);
-            console.log(await f.json());
+            console.log(JSON.stringify(await f.json()));
         })();
     </script>
 </body>
