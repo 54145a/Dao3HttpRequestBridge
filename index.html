@@ -20,7 +20,7 @@
             h.append("nonce","rtJ1fM34GKTmM3QGV2ihC");
             h.append("timestamp",1699761616911);
             h.append("hash","C0DBAB8F0311E7DAC50D9F436D37EC7055A34BFB3B60D9670A15A23EA0D4E835");
-            let r = new Request("https://code-api-pc.dao3.fun/ugc/creator/content/page",{
+            let f = await fetch("https://code-api-pc.dao3.fun/ugc/creator/content/page",{
                 method:"POST",
                 headers:h,
                 body:{
@@ -31,7 +31,6 @@
                     "orderDesc":true
                 }
             });
-            let f = await fetch(r);
             console.log(JSON.stringify(await f.json()));
         })();
     </script>
