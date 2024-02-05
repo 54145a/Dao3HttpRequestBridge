@@ -22,6 +22,7 @@
             });
             const next = new URL(params.get("from"));
             next.searchParams.append("httpBridgeEnd", true);
+            next.searchParams.append("timestamp",Date.now())
             next.searchParams.append("result", JSON.stringify(await result.json()));
             console.log(next);
             console.log(params.get("stop"));
