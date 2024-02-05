@@ -1,7 +1,2 @@
-# Dao3 145a Client
-已经废了。。。。。
-
-## todo
-- [x] 开始项目
-- [ ] 页面框架
-- [ ] 获取地图信息
+# 145 Request Bridge
+Dao3http中转

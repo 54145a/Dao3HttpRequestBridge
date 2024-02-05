@@ -4,39 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>145 Request Bridge</title>
 </head>
 
 <body>
-    <script src="//cdn.bootcdn.net/ajax/libs/eruda/2.3.3/eruda.js"></script>
+    请稍候……
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script>
     <script>
-        (async function main() {
-            let auth = prompt("Dao3 Auth:");
-            if (!auth) return;
-            let h = new Headers();
-            h.append("Accept", "application/json, text/plain, */*");
-            h.append("Content-Type", "application/json");
-            h.append("Cache-Control", "no-cache,no-store,must-revalidate");
-            h.append("Authorization", auth);
-            h.append("nonce", "rtJ1fM34GKTmM3QGV2ihC");
-            h.append("timestamp", 1699761616911);
-            h.append("hash", "C0DBAB8F0311E7DAC50D9F436D37EC7055A34BFB3B60D9670A15A23EA0D4E835");
-            let f = await fetch("https://code-api-pc.dao3.fun/ugc/creator/content/page", {
-                method: "POST",
-                headers: h,
-                body: {
-                    data: {
-                        "type": 0,
-                        "limit": 24,
-                        "offset": 0,
-                        "orderBy": 1,
-                        "orderDesc": true
-                    }
-                }
+        (async function () {
+            console.log(location.search);
+            const params = new URLSearchParams(location.search);
+            const result = await fetch(params.get("url"), {
+                method: params.get("method"),
+                headers: JSON.parse(params.get("headers")),
+                body: JSON.parse(params.get("body"))
             });
-            console.log(JSON.stringify(await f.json()));
-        })();
+            const next = new URL(params.get("from"));
+            next.searchParams.append("from", location.hostname);
+            next.searchParams.append("result", JSON.stringify(await result.json()));
+            console.log(next);
+            console.log(params.get("stop"));
+            if (params.get("stop") == "1") return;
+            location.assign(next);
+        })().catch(console.error);
     </script>
 </body>
 
