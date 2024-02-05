@@ -17,8 +17,8 @@
             const params = new URLSearchParams(location.search);
             const result = await fetch(params.get("url"), {
                 method: params.get("method")??"GET",
-                headers: JSON.parse(params.get("headers")),
-                body: JSON.parse(params.get("body")
+                headers: JSON.parse(params.get("headers"))??{},
+                body: JSON.parse(params.get("body"))??{}
             });
             const next = new URL(params.get("from"));
             next.searchParams.append("httpBridgeEnd", true);
