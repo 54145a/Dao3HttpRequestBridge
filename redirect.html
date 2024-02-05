@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        const nextParams = new URLSearchParams(location.search);
+        nextParams.delete("hash");
+        const next = new URL(`https://54145a.github.io/Dao3HttpRequestBridge?${nextParams.toString()}`);
+        location.assign(next);
+    </script>
+</head>
+
+</html>
